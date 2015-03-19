@@ -1,6 +1,38 @@
-
-#main{
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #b0e0e6;
+body{
+	background-color: #dad9d4;
 }
+
+a img{
+	margin-top: 0.5%;
+	margin-left: 0.5%;
+}
+
+#frame{
+	display: block;
+	background-image: url("banner-background.png");
+	background-size: 65px;
+	height: 65px;
+}
+
+#banner{
+	color: #ffffff;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+img.kb{
+	display: block;
+	height: 425px;
+	width: 340px;
+    margin: auto;
+}
+form{
+	width: 340px;
+    margin: auto;
+}
+
+h1, p{
+	display: block;
+	text-align: center;
+}
+
