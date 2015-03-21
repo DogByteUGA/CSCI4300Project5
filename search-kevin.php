@@ -1,1 +1,12 @@
-This page is supposed to show search results for all films with the given actor and Kevin Bacon.
+<?php
+ include 'common.php';
+ ?>
+ <p> Films with <?php echo $first?> <?php echo $last?> and Kevin Bacon<p>
+
+
+
+<?php
+
+include 'bottom.html';
+
+ ?>
