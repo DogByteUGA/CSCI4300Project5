@@ -1,5 +1,5 @@
 body{
-	background-color: #dad9d4;
+	background-color: white;
 }
 
 a img{
@@ -25,7 +25,8 @@ td,th {
 }
 
 tr:nth-child(odd) {
-  background-color: white;
+  background-color: #dad9d4;
+
 }
 
 
