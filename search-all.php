@@ -4,10 +4,10 @@
  <p> Films with <?php echo $first?> <?php echo $last?><p>
 
 
- 	<?php 
- 	//connect to my imdb_small database
+    <?php 
+    //connect to my imdb_small database
 
-	  $username = "root";
+      $username = "root";
       $password = "flaker";
  
 try {
@@ -21,23 +21,30 @@ try {
     $stmt->execute();
  
  // get array containing all of the result rows
-    $result = $stmt->fetchAll();
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
  
-//  if contains row data print(need to put into a table)
-if (count($result) ) {
-    foreach($result as $row) {
-        print_r($row);
-    }
-} else {
-    echo "No rows returned.";
-    print($first);
-      
-	}
 }catch(PDOException $e) {
     echo 'ERROR: ' . $e->getMessage();
 }
 
 ?>
+
+    <table class="searchAlltable">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Year</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php while ($r = $stmt->fetch()): ?>
+       <tr>
+          <td><?php echo htmlspecialchars($r['name'])?></td>
+          <td><?php echo htmlspecialchars($r['year']); ?></td>
+       </tr>
+      <?php endwhile; ?>
+    </tbody>
+</table>
 
 
 <?php
