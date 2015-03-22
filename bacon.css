@@ -6,6 +6,28 @@ a img{
 	margin-top: 0.5%;
 	margin-left: 0.5%;
 }
+#myTable{
+	width: 85%;
+	border: 1px solid #cef;
+	text-align: left;
+	margin-left: 8%;
+
+
+}
+th {
+	font-weight: bold;
+	background-color: #acf;
+	border-bottom: 1px solid #cef; 
+}
+
+td,th {
+	padding: 4px 5px; 
+}
+
+tr:nth-child(odd) {
+  background-color: white;
+}
+
 
 #frame{
 	display: block;

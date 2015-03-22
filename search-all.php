@@ -1,14 +1,19 @@
 <?php
  include 'common.php';
  ?>
- <p> Films with <?php echo $first?> <?php echo $last?><p>
+ <style>
+<?php include 'bacon.css'; ?>
+</style>
 
+<link href="bacon.css" type="text/css" rel="stylesheet" />
+ <p> Films with <?php echo $first?> <?php echo $last?><p>
 
     <?php 
     //connect to my imdb_small database
 
       $username = "root";
       $password = "flaker";
+      $row_num = 1;
  
 try {
     $conn = new PDO('mysql:host=localhost:3306;dbname=imdb_small', $username, $password);
@@ -29,22 +34,25 @@ try {
 
 ?>
 
-    <table class="searchAlltable">
+    <table id="myTable">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Year</th>
+          <th class="colOne">#</th>
+          <th class="colTwo">Title</th>
+          <th class="colThree">Year</th>
         </tr>
     </thead>
     <tbody>
     <?php while ($r = $stmt->fetch()): ?>
        <tr>
-          <td><?php echo htmlspecialchars($r['name'])?></td>
-          <td><?php echo htmlspecialchars($r['year']); ?></td>
+          <td> <?php echo $row_num++?> </td>
+          <td> <?php echo htmlspecialchars($r['name'])?> </td>
+          <td> <?php echo htmlspecialchars($r['year']); ?> </td>
        </tr>
       <?php endwhile; ?>
     </tbody>
 </table>
+
 
 
 <?php
