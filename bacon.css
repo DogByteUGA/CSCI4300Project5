@@ -1,11 +1,35 @@
 body{
-	background-color: #dad9d4;
+	background-color: white;
 }
 
 a img{
 	margin-top: 0.5%;
 	margin-left: 0.5%;
 }
+#myTable{
+	width: 85%;
+	border: 1px solid #cef;
+	text-align: left;
+	margin-left: 8%;
+	border-collapse: collapse;
+
+
+}
+th {
+	font-weight: bold;
+	background-color: #acf;
+	border-bottom: 1px solid #cef; 
+}
+
+td,th {
+	padding: 4px 5px; 
+}
+
+tr:nth-child(odd) {
+  background-color: #dad9d4;
+
+}
+
 
 #frame{
 	display: block;
@@ -15,9 +39,14 @@ a img{
 }
 
 #banner{
-	color: #ffffff;
+	background-color: black;
+	color: red;
 	font-size: 24px;
 	font-weight: bold;
+}
+#w3c{
+	background-color: black;
+
 }
 
 img.kb{
@@ -35,4 +64,3 @@ h1, p{
 	display: block;
 	text-align: center;
 }
-
