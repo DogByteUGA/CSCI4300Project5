@@ -1,16 +1,16 @@
 <?php
  include 'common.php';
  ?>
- <style>
-<?php include 'bacon.css'; ?>
-</style>
-
-<link href="bacon.css" type="text/css" rel="stylesheet" />
+ 
  <p> Films with <?php echo $first?> <?php echo $last?> and Kevin Bacon<p>
 
     <?php 
+<<<<<<< HEAD
     //connect to my imdb database
 
+=======
+    //connect to my imdb_small database
+>>>>>>> origin/BranchTwo
       $username = "root";
       $password = "flaker";
       $row_num = 1;
@@ -18,8 +18,11 @@
 try {
     $conn = new PDO('mysql:host=localhost:3306;dbname=imdb', $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
-     
+     $kevin = "kevin";
+	 $bacon = "bacon";
+	 
     $stmt = $conn->prepare('SELECT name, year 
+<<<<<<< HEAD
       FROM movies 
       JOIN roles ON movies.id=roles.movie_id 
     JOIN roles r ON movies.id=r.movie_id  
@@ -31,6 +34,18 @@ try {
     AND a.last_name = :bacon
     AND roles.movie_id=r.movie_id 
     ORDER BY movies.year desc;');
+=======
+    	FROM movies 
+    	JOIN roles ON movies.id = roles.movie_id 
+		JOIN roles r ON movies.id = r.movie_id  
+		JOIN actors ON roles.actor_id = actors.id 
+		JOIN actors a ON r.actor_id = a.id 
+        WHERE actors.first_name = :first AND actors.last_name = :last
+		AND a.first_name LIKE :kevin AND a.last_name LIKE :bacon
+		AND roles.movie_id = r.movie_id 
+		ORDER BY movies.year desc;');
+		
+>>>>>>> origin/BranchTwo
     //function to add quotes to query
     $stmt->bindParam(':first', $first, PDO::PARAM_STR);
     $stmt->bindParam(':last', $last, PDO::PARAM_STR);
@@ -44,7 +59,6 @@ try {
 }catch(PDOException $e) {
     echo 'ERROR: ' . $e->getMessage();
 }
-
 ?>
 <?php $r = $stmt->fetch(); $rowNum = htmlspecialchars($r['name']); ?>
 <?php if(strlen($rowNum) < 1){
@@ -71,10 +85,19 @@ try {
       <?php endwhile; ?>
     </tbody>
 </table>
+<<<<<<< HEAD
 
 
 <?php end: ?>
+=======
+>>>>>>> origin/BranchTwo
 <?php
+if ($row_num <= 1)
+{
+	echo "$first $last was not in any movies with Kevin Bacon.";
+}
+?>
 
+<?php
 include 'bottom.html';
 ?>
