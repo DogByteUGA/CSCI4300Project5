@@ -1,10 +1,8 @@
 <?php
  include 'common.php';
  ?>
- 
  <p> Films with <?php echo $first?> <?php echo $last?> and Kevin Bacon<p>
-
-    <?php 
+ <?php 
 <<<<<<< HEAD
     //connect to my imdb database
 
@@ -86,7 +84,6 @@ try {
     </tbody>
 </table>
 <<<<<<< HEAD
-
 
 <?php end: ?>
 =======
