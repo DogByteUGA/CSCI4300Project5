@@ -5,10 +5,11 @@ include 'top.html';
     $error = "Error!";
     $first = $_GET["firstname"];
     $last =  $_GET["lastname"];
+    $kevin =  "Kevin";
+    $bacon =  "Bacon";
 
      if($first!= ""){
 			$valid = true;
-			echo "correct firstname";
 	 }
 	 else{
 			$valid = false;
@@ -16,7 +17,6 @@ include 'top.html';
 	 }
 	 if($last!= ""){
 			$valid = true;
-			echo "correct lastname";
 	 }
 	 else{
 			$valid = false;

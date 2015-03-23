@@ -11,6 +11,7 @@ a img{
 	border: 1px solid #cef;
 	text-align: left;
 	margin-left: 8%;
+	border-collapse: collapse;
 
 
 }
@@ -42,6 +43,10 @@ tr:nth-child(odd) {
 	color: red;
 	font-size: 24px;
 	font-weight: bold;
+}
+#w3c{
+	background-color: black;
+
 }
 
 img.kb{
