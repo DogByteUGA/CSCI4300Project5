@@ -41,7 +41,7 @@ h1, p{
 	text-align: center;
 }
 
-#myTable{
+.myTable{
 	width: 550px;
 	margin: auto;
 	text-align: center;
