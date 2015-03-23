@@ -1,25 +1,25 @@
 <?php
  include 'common.php';
  ?>
- <style>
-<?php include 'bacon.css'; ?>
-</style>
-
-<link href="bacon.css" type="text/css" rel="stylesheet" />
  <p> Films with <?php echo $first?> <?php echo $last?><p>
 
     <?php 
-    //connect to my imdb_small database
+    //connect to my imdb database
 
       $username = "root";
       $password = "flaker";
       $row_num = 1;
  
 try {
-    $conn = new PDO('mysql:host=localhost:3306;dbname=imdb_small', $username, $password);
+    $conn = new PDO('mysql:host=localhost:3306;dbname=imdb', $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
      
-    $stmt = $conn->prepare('SELECT name, year FROM movies JOIN roles ON movies.id=roles.movie_id JOIN actors ON roles.actor_id = actors.id WHERE actors.first_name = :first AND actors.last_name = :last ORDER BY movies.year desc');
+    $stmt = $conn->prepare('SELECT name, year 
+     FROM movies 
+     JOIN roles ON movies.id=roles.movie_id 
+     JOIN actors ON roles.actor_id = actors.id 
+     WHERE actors.first_name = :first AND actors.last_name = :last 
+     ORDER BY movies.year desc');
     //function to add quotes to query
     $stmt->bindParam(':first', $first, PDO::PARAM_STR);
     $stmt->bindParam(':last', $last, PDO::PARAM_STR);
