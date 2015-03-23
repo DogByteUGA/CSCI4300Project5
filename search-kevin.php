@@ -9,28 +9,28 @@
  <p> Films with <?php echo $first?> <?php echo $last?> and Kevin Bacon<p>
 
     <?php 
-    //connect to my imdb_small database
+    //connect to my imdb database
 
       $username = "root";
       $password = "flaker";
       $row_num = 1;
  
 try {
-    $conn = new PDO('mysql:host=localhost:3306;dbname=imdb_small', $username, $password);
+    $conn = new PDO('mysql:host=localhost:3306;dbname=imdb', $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
      
     $stmt = $conn->prepare('SELECT name, year 
-    	FROM movies 
-    	JOIN roles ON movies.id=roles.movie_id 
-		JOIN roles r ON movies.id=r.movie_id  
-		JOIN actors ON roles.actor_id = actors.id 
-		JOIN actors a ON r.actor_id = a.id 
+      FROM movies 
+      JOIN roles ON movies.id=roles.movie_id 
+    JOIN roles r ON movies.id=r.movie_id  
+    JOIN actors ON roles.actor_id = actors.id 
+    JOIN actors a ON r.actor_id = a.id 
         WHERE actors.first_name = :first 
         AND actors.last_name =:last
-		AND a.first_name = :kevin
-		AND a.last_name = :bacon
-		AND roles.movie_id=r.movie_id 
-		ORDER BY movies.year desc;');
+    AND a.first_name = :kevin
+    AND a.last_name = :bacon
+    AND roles.movie_id=r.movie_id 
+    ORDER BY movies.year desc;');
     //function to add quotes to query
     $stmt->bindParam(':first', $first, PDO::PARAM_STR);
     $stmt->bindParam(':last', $last, PDO::PARAM_STR);
@@ -46,6 +46,12 @@ try {
 }
 
 ?>
+<?php $r = $stmt->fetch(); $rowNum = htmlspecialchars($r['name']); ?>
+<?php if(strlen($rowNum) < 1){
+      echo "Actor not found";
+      goto end;
+    }
+  ?>
 
     <table id="myTable">
       <thead>
@@ -67,7 +73,7 @@ try {
 </table>
 
 
-
+<?php end: ?>
 <?php
 
 include 'bottom.html';

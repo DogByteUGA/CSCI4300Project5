@@ -16,7 +16,7 @@
       $row_num = 1;
  
 try {
-    $conn = new PDO('mysql:host=localhost:3306;dbname=imdb_small', $username, $password);
+    $conn = new PDO('mysql:host=localhost:3306;dbname=imdb', $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
      
     $stmt = $conn->prepare('SELECT name, year FROM movies JOIN roles ON movies.id=roles.movie_id JOIN actors ON roles.actor_id = actors.id WHERE actors.first_name = :first AND actors.last_name = :last ORDER BY movies.year desc');
@@ -33,6 +33,13 @@ try {
 }
 
 ?>
+<?php $r = $stmt->fetch(); $rowNum = htmlspecialchars($r['name']);   ?>
+
+<?php if(strlen($rowNum) < 1){
+      echo "Actor not found";
+      goto end;
+    }
+    ?>
 
     <table id="myTable">
       <thead>
@@ -43,7 +50,17 @@ try {
         </tr>
     </thead>
     <tbody>
-    <?php while ($r = $stmt->fetch()): ?>
+      
+
+    <?php while ($r = $stmt->fetch()): $rowNum = htmlspecialchars($r['name']);   ?>
+    
+
+     <?php if(strlen($rowNum) < 1){
+      echo "Actor not found";
+      goto end;
+    }
+    ?>
+   
        <tr>
           <td> <?php echo $row_num++?> </td>
           <td> <?php echo htmlspecialchars($r['name'])?> </td>
@@ -55,7 +72,9 @@ try {
 
 
 
+<?php end: ?>
 <?php
+
 
 include 'bottom.html';
 
