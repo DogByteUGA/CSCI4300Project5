@@ -51,16 +51,13 @@ try {
     </thead>
     <tbody>
       
-
     <?php while ($r = $stmt->fetch()): $rowNum = htmlspecialchars($r['name']);   ?>
     
-
      <?php if(strlen($rowNum) < 1){
       echo "Actor not found";
       goto end;
     }
     ?>
-   
        <tr>
           <td> <?php echo $row_num++?> </td>
           <td> <?php echo htmlspecialchars($r['name'])?> </td>
@@ -70,11 +67,8 @@ try {
     </tbody>
 </table>
 
-
-
 <?php end: ?>
 <?php
-
 
 include 'bottom.html';
 
