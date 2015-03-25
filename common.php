@@ -24,7 +24,7 @@ include 'top.html';
 	 }
 	 ?>
 	
-	 <h1> Results for <?php echo $first?> <?php echo $last?> </h1>
+	 <h1> Results for this <?php echo $first?> <?php echo $last?> </h1>
 	 
 
 	 
